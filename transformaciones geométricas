@@ -1,0 +1,130 @@
+import cv2 as cv
+import numpy as np
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Obtener el tamaño de la imagen
+x, y = img.shape
+
+# Definir el desplazamiento en x e y
+dx, dy = 100, 50
+
+# Crear la matriz de traslación
+M = np.float32([[1, 0, dx], [0, 1, dy]])
+
+# Aplicar la traslación usando warpAffine
+translated_img = cv.warpAffine(img, M, (y, x))
+
+# Mostrar la imagen original y la trasladada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Trasladada', translated_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+-----------------------------------------------
+
+import cv2 as cv
+import numpy as np
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Obtener el tamaño de la imagen
+x, y = img.shape
+
+# Calcular el centro de la imagen
+center = (y // 2, x // 2)
+
+# Definir el ángulo de rotación (en grados)
+angle = 45
+
+# Crear la matriz de rotación
+M = cv.getRotationMatrix2D(center, angle, 1.0)
+
+# Aplicar la rotación usando warpAffine
+rotated_img = cv.warpAffine(img, M, (y, x))
+
+# Mostrar la imagen original y la rotada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Rotada', rotated_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+-----------------------------------------------
+
+import cv2 as cv
+import numpy as np
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Definir el factor de escala
+scale_x, scale_y = 0.5, 0.5
+
+# Aplicar el escalado usando cv.resize()
+scaled_img = cv.resize(img, None, fx=scale_x, fy=scale_y)
+
+# Mostrar la imagen original y la escalada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Escalada', scaled_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+-----------------------------------------------
+
+import cv2 as cv
+import numpy as np
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Obtener el tamaño de la imagen
+x, y = img.shape
+
+# Definir el factor de cizallamiento
+shear_factor = 0.5
+
+# Crear la matriz de cizallamiento
+M = np.float32([[1, shear_factor, 0], [0, 1, 0]])
+
+# Aplicar el cizallamiento usando warpAffine
+sheared_img = cv.warpAffine(img, M, (y, x))
+
+# Mostrar la imagen original y la cizallada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Cizallada', sheared_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+----------------------------------------------
+
+import cv2 as cv
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Aplicar la reflexión horizontal usando cv.flip()
+reflected_img = cv.flip(img, 1)
+
+# Mostrar la imagen original y la reflejada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Reflejada Horizontalmente', reflected_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+
+----------------------------------------------
+
+import cv2 as cv
+
+# Cargar la imagen en escala de grises
+img = cv.imread('tr.png', 0)
+
+# Aplicar la reflexión vertical usando cv.flip()
+reflected_img = cv.flip(img, 0)
+
+# Mostrar la imagen original y la reflejada
+cv.imshow('Imagen Original', img)
+cv.imshow('Imagen Reflejada Verticalmente', reflected_img)
+cv.waitKey(0)
+cv.destroyAllWindows()
